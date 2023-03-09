@@ -16,7 +16,7 @@ const SongPlayer = ({ songs, songIdx, setSongIdx }) => {
         <div className="songPlayer">
             <div className="innerSongPlayer">
                 <SongPlay {...{currentSong: songs[songIdx], audioRef, setDuration, progressBarRef}} />
-                <SongControls {...{audioRef, progressBarRef, duration, setTimeProgress, songs, songIdx, setSongIdx}} />
+                <SongControls {...{audioRef, progressBarRef, setTimeProgress, songs, songIdx, setSongIdx}} />
                 <SongProgressBar {...{progressBarRef, audioRef, timeProgress, duration}} />
             </div>
         </div>

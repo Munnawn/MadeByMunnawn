@@ -8,7 +8,6 @@ import { BrowserRouter, Routes, Route } from 'react-router-dom';
 // Pages and components
 import HomePage from './pages/HomePage';
 import SongPage from './pages/SongPage';
-//import Navbar from './components/Navbar';
 
 function App() {
   return (

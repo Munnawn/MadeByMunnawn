@@ -17,7 +17,6 @@ const SongPage = () => {
     const totalImgs = 1;
 
     const handleCommentsButtonClick = () => {
-        console.log(box_ref, showComments, songs);
         box_ref.current.classList.remove('fade-in');
         box_ref.current.classList.add('fade-out');
 
@@ -83,7 +82,7 @@ const SongPage = () => {
                         </div>
                     </div>
                 </div>
-                <div className="d-flex justify-content-center fixed-bottom mb-3">
+                <div className="comments-button">
                     <button className="btn btn-dark" type="button" onClick={handleCommentsButtonClick}>
                         {!showComments ? 'Comments' : 'Back'}
                     </button>

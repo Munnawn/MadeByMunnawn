@@ -9,7 +9,6 @@ import skipToPrev from "../svg/skipToPrev/skip-start-fill.svg";
 const SongControls = ({ 
     audioRef, 
     progressBarRef, 
-    duration, 
     setTimeProgress,
     songs,
     songIdx,
@@ -50,17 +49,17 @@ const SongControls = ({
         progressBarRef.current.value = currentTime;
         progressBarRef.current.style.setProperty(
             '--range-progress',
-            `${(progressBarRef.current.value / duration) * 100}%`
+            `${(progressBarRef.current.value / audioRef.current.duration) * 100}%`
         );
 
-        if (isPlaying && audioRef.current.currentTime >= duration && duration != 0) {
+        if (isPlaying && audioRef.current.currentTime >= audioRef.current.duration && audioRef.current.duration != 0) {
             // When song is finished, we want the play/pause to flip, and to be returned to 00:00
             togglePlayPause();
             audioRef.current.currentTime = 0;
         }
 
         playAnimationRef.current = requestAnimationFrame(repeat);
-    }, [audioRef, duration, progressBarRef, setTimeProgress, isPlaying]);
+    }, [audioRef, progressBarRef, setTimeProgress, isPlaying]);
 
     useEffect(() => {
         if (isPlaying) {
@@ -85,7 +84,7 @@ const SongControls = ({
                     <img src={skipToPrev} alt='skip to prev song' width='25em' />
                 </button>
                 <button onClick={togglePlayPause}>
-                    {isPlaying && audioRef.current.currentTime < duration ? 
+                    {isPlaying && audioRef.current.currentTime < audioRef.current.duration ? 
                         <img src={pauseIcon} alt='pause song' width='50em' /> : <img src={playIcon} alt='play song' width='50em' />}
                 </button>
                 <button onClick={() => changeSong(1)}>
